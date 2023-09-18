@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.frgd;
 let
-  cfg = config.plusultra.cli-apps.proton;
+  cfg = config.frgd.cli-apps.proton;
 in
 {
-  options.plusultra.cli-apps.proton = with types; {
+  options.frgd.cli-apps.proton = with types; {
     enable = mkBoolOpt false "Whether or not to enable Proton.";
   };
 

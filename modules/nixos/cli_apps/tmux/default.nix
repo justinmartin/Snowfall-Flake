@@ -1,9 +1,9 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.frgd;
 let
-  cfg = config.plusultra.cli-apps.tmux;
+  cfg = config.frgd.cli-apps.tmux;
   configFiles = lib.snowfall.fs.get-files ./config;
 
   # Extrakto with wl-clipboard patched in.
@@ -44,12 +44,12 @@ let
     ]);
 in
 {
-  options.plusultra.cli-apps.tmux = with types; {
+  options.frgd.cli-apps.tmux = with types; {
     enable = mkBoolOpt false "Whether or not to enable tmux.";
   };
 
   config = mkIf cfg.enable {
-    plusultra.home.extraOptions = {
+    frgd.home.extraOptions = {
       programs.tmux = {
         enable = true;
         terminal = "screen-256color-bce";

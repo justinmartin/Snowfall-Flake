@@ -1,12 +1,12 @@
 { lib, pkgs, config, ... }:
 
 with lib;
-with lib.plusultra;
+with lib.frgd;
 let
-  cfg = config.plusultra.cli-apps.prisma;
+  cfg = config.frgd.cli-apps.prisma;
 in
 {
-  options.plusultra.cli-apps.prisma = with types; {
+  options.frgd.cli-apps.prisma = with types; {
     enable = mkBoolOpt false "Whether or not to install Prisma";
     pkgs = {
       npm = mkOpt package pkgs.nodePackages.prisma "The NPM package to install";
@@ -18,7 +18,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [ cfg.pkgs.npm ];
 
-    plusultra.home.extraOptions = {
+    frgd.home.extraOptions = {
       programs.zsh.initExtra = ''
         export PRISMA_MIGRATION_ENGINE_BINARY="${cfg.pkgs.engines}/bin/migration-engine"
         export PRISMA_QUERY_ENGINE_BINARY="${cfg.pkgs.engines}/bin/query-engine"
