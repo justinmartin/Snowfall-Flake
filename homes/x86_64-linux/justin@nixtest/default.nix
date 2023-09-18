@@ -5,7 +5,7 @@ with lib.frgd;
   frgd = {
     user = {
       enable = true;
-      name = config.snowfallorg.user.name;
+      name = config.frgd.user.name;
     };
 
     cli-apps = {
