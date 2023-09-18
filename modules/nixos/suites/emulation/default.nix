@@ -15,7 +15,6 @@ in
     frgd = {
       apps = {
         yuzu = enabled;
-        pcsx2 = enabled;
         dolphin = enabled;
       };
     };
