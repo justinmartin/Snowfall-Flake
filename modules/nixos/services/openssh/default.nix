@@ -84,7 +84,7 @@ in
       cfg.authorizedKeys;
 
     frgd.home.extraOptions = {
-      programs.zsh.shellAliases = foldl
+      programs.fish.shellAliases = foldl
         (aliases: system:
           aliases // {
             "ssh-${system}" = "ssh ${system} -t tmux a";

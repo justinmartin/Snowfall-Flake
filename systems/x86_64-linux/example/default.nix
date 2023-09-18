@@ -11,10 +11,10 @@
     extraGroups = [ "wheel" ];
   };
 
-  environment.systemPackages = with pkgs; [
-    neovim
-    firefox
-  ];
+  environment.systemPackages = with pkgs;
+    [
+
+    ];
 
   system.stateVersion = "22.05";
 }

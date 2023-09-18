@@ -10,5 +10,5 @@ in
       mkBoolOpt false "Whether or not to configure timezone information.";
   };
 
-  config = mkIf cfg.enable { time.timeZone = "America/Los_Angeles"; };
+  config = mkIf cfg.enable { time.timeZone = "America/Chicago"; };
 }

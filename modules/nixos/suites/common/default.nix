@@ -28,10 +28,10 @@ in
       tools = {
         git = enabled;
         misc = enabled;
-        fup-repl = enabled;
+        # fup-repl = enabled;
         comma = enabled;
-        nix-ld = enabled;
-        bottom = enabled;
+        # nix-ld = enabled;
+        btop = enabled;
       };
 
       hardware = {
