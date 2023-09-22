@@ -30,10 +30,14 @@
       url = "github:snowfallorg/lib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    snowfall-flake = {
+      url = "github:snowfallorg/flake";
+      # Flake requires some packages that aren't on 22.05, but are available on unstable.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
-    agenix.url = "github:ryantm/agenix";
+    agenix.url = "github:yaxitech/ragenix";
 
   };
 
@@ -50,5 +54,11 @@
 
         namespace = "frgd";
       };
+    systems.modules.nixos = with inputs; [
+        home-manager.nixosModules.home-manager
+        # @TODO(jakehamilton): Replace plusultra.services.attic now that vault-agent
+        # exists and can force override environment files.
+        # attic.nixosModules.atticd
+      ];
     };
 }

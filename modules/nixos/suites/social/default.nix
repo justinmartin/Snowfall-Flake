@@ -13,10 +13,6 @@ in
   config = mkIf cfg.enable {
     frgd = {
       apps = {
-        discord = {
-          enable = true;
-          chromium = enabled;
-        };
         element = enabled;
       };
     };

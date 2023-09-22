@@ -13,17 +13,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       comma
-      frgd.nix-update-index
+      #frgd.nix-update-index
     ];
-
-    frgd.home = {
-      configFile = {
-        "wgetrc".text = "";
-      };
-
-      extraOptions = {
-        programs.nix-index.enable = true;
-      };
-    };
-  };
+};
 }

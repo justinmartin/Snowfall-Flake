@@ -18,7 +18,7 @@ in
       };
 
       cli-apps = {
-        neovim = enabled;
+#        neovim = enabled;
         tmux = enabled;
       };
     };

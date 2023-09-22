@@ -13,9 +13,9 @@ in
   config = mkIf cfg.enable {
     frgd = {
       apps = {
-        gimp = enabled;
+#        gimp = enabled;
         inkscape = enabled;
-        blender = enabled;
+#        blender = enabled;
       };
     };
   };

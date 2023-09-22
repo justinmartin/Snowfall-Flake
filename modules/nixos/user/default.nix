@@ -4,7 +4,7 @@ with lib;
 with lib.frgd;
 let
   cfg = config.frgd.user;
-  defaultIconFileName = "profile.png";
+  #defaultIconFileName = "profile.png";
   defaultIcon = pkgs.stdenvNoCC.mkDerivation {
     name = "default-icon";
     src = ./. + "/${defaultIconFileName}";
@@ -27,7 +27,7 @@ let
   '';
 in {
   options.frgd.user = with types; {
-    name = mkOpt str "short" "The name to use for the user account.";
+    name = mkOpt str "justin" "The name to use for the user account.";
     fullName = mkOpt str "Justin Martin" "The full name of the user.";
     email = mkOpt str "jus10mar10@gmail.com" "The email of the user.";
     initialPassword = mkOpt str "password"
@@ -44,13 +44,13 @@ in {
   config = {
     environment.systemPackages = with pkgs;
       [
-
+        fishPlugins.fzf
+        fishPlugins.done
+        fishPlugins.hydro
       ];
 
-    programs.zsh = {
+    programs.fish= {
       enable = true;
-      autosuggestions.enable = true;
-      histFile = "$XDG_CACHE_HOME/zsh.history";
     };
 
     frgd.home = {
@@ -74,19 +74,19 @@ in {
     users.users.${cfg.name} = {
       isNormalUser = true;
 
-      inherit (cfg) name initialPassword;
+      #inherit (cfg) name initialPassword;
 
       home = "/home/${cfg.name}";
       group = "users";
 
-      # shell = pkgs.zsh;
+      shell = pkgs.fish;
 
       # Arbitrary user ID to use for the user. Since I only
       # have a single user on my machines this won't ever collide.
       # However, if you add multiple users you'll need to change this
       # so each user has their own unique uid (or leave it out for the
       # system to select).
-      uid = 1000;
+      #uid = 1000;
 
       extraGroups = [ ] ++ cfg.extraGroups;
     } // cfg.extraOptions;

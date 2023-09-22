@@ -13,8 +13,8 @@ in
   config = mkIf cfg.enable {
     frgd = {
       apps = {
-        pitivi = enabled;
-        obs = enabled;
+#        pitivi = enabled;
+#        obs = enabled;
       };
     };
   };

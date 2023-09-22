@@ -15,8 +15,6 @@ in
       common = enabled;
       desktop = enabled;
       games = enabled;
-      social = enabled;
-      media = enabled;
     };
   };
 }

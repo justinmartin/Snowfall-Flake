@@ -5,18 +5,10 @@ with lib.frgd;
 let
   cfg = config.frgd.suites.games;
   apps = {
-    steam = enabled;
-    prismlauncher = enabled;
-    lutris = enabled;
-    winetricks = enabled;
-    protontricks = enabled;
-    doukutsu-rs = enabled;
-    bottles = enabled;
+#    steam = enabled;
+    #lutris = enabled;
   };
-  cli-apps = {
-    wine = enabled;
-    proton = enabled;
-  };
+ 
 in
 {
   options.frgd.suites.games = with types; {
@@ -24,5 +16,5 @@ in
       mkBoolOpt false "Whether or not to enable common games configuration.";
   };
 
-  config = mkIf cfg.enable { frgd = { inherit apps cli-apps; }; };
+  config = mkIf cfg.enable { frgd = { inherit apps; }; };
 }
