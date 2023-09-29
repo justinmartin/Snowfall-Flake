@@ -53,7 +53,7 @@
     isNormalUser = true;
     description = "justin";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ gcc ];
   };
 
   # Enable automatic login for the user.
@@ -70,6 +70,8 @@
     #  wget
   ];
 
+  programs.nix-ld.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -82,10 +84,13 @@
   programs.git.enable = true;
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  frgd = { tools = {
-  comma.enable = true;
-  btop.enable = true; }; };
-
+  frgd = {
+    tools = {
+      comma.enable = true;
+      btop.enable = true;
+    };
+  };
+  services.vscode-server.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -5,13 +5,15 @@ with lib.frgd;
   frgd = {
     user = {
       enable = true;
-      name = config.frgd.user.name;
+      name = "justin";
     };
 
     cli-apps = {
       zsh = enabled;
       neovim = enabled;
       home-manager = enabled;
+      tmux = enabled;
+      bottom = enabled;
     };
 
     tools = {

@@ -20,10 +20,10 @@ in
 {
   options.frgd.user = {
     enable = mkOpt types.bool false "Whether to configure the user account.";
-    name = mkOpt (types.nullOr types.str) config.snowfallorg.user.name "The user account.";
+    name = mkOpt (types.nullOr types.str) config.frgd.user.name "The user account.";
 
-    fullName = mkOpt types.str "Jake Hamilton" "The full name of the user.";
-    email = mkOpt types.str "jake.hamilton@hey.com" "The email of the user.";
+    fullName = mkOpt types.str "Justin Martin" "The full name of the user.";
+    email = mkOpt types.str "jus10mar10@gmail.com" "The email of the user.";
 
     home = mkOpt (types.nullOr types.str) home-directory "The user's home directory.";
   };

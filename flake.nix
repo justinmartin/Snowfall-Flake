@@ -38,6 +38,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
     agenix.url = "github:yaxitech/ragenix";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
 
   };
 
@@ -56,6 +57,8 @@
       };
     systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
+        vscode-server.nixosModules.default
+
         # @TODO(jakehamilton): Replace plusultra.services.attic now that vault-agent
         # exists and can force override environment files.
         # attic.nixosModules.atticd

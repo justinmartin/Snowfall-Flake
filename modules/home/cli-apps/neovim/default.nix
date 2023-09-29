@@ -14,7 +14,7 @@ in
     home = {
       packages = with pkgs; [
         less
-        frgd.neovim
+        neovim
       ];
 
       sessionVariables = {
