@@ -12,7 +12,7 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.frgd.list-iommu
+      # pkgs.frgd.list-iommu
     ];
 
     frgd = {
@@ -22,14 +22,14 @@ in
       # cache.public = enabled;
 
       cli-apps = {
-        flake = enabled;
+        # flake = enabled;
       };
 
       tools = {
         git = enabled;
         fup-repl = enabled;
         comma = enabled;
-        bottom = enabled;
+        btop = enabled;
         direnv = enabled;
       };
 
@@ -44,7 +44,7 @@ in
       };
 
       security = {
-        doas = enabled;
+        # doas = enabled;
       };
 
       system = {

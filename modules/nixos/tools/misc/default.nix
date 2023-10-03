@@ -14,12 +14,13 @@ in
 
     environment.systemPackages = with pkgs; [
       fzf
-      killall
+      # killall
       unzip
       file
       jq
       clac
       wget
+      usbutils
     ];
   };
 }

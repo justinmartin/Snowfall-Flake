@@ -10,5 +10,5 @@ in
   };
 
   config =
-    mkIf cfg.enable { environment.systemPackages = with pkgs; [ vscode ]; };
+    mkIf cfg.enable { environment.systemPackages = with pkgs; [ vscodium ]; };
 }

@@ -22,7 +22,7 @@ in
       # cache.public = enabled;
 
       cli-apps = {
-        flake = enabled;
+        # flake = enabled;
       };
 
       tools = {
@@ -30,7 +30,7 @@ in
         misc = enabled;
         # fup-repl = enabled;
         comma = enabled;
-        # nix-ld = enabled;
+        nix-ld = enabled;
         btop = enabled;
       };
 
@@ -47,9 +47,9 @@ in
       };
 
       security = {
-        gpg = enabled;
-        doas = enabled;
-        keyring = enabled;
+        # gpg = enabled;
+        # doas = enabled;
+        # keyring = enabled;
       };
 
       system = {

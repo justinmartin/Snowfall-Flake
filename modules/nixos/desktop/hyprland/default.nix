@@ -1,23 +1,12 @@
-# Hyprland configuration
-#
-#  flake.nix
-#   ├─ ./hosts
-#   │   └─ ./<host>
-#   │       └─ default.nix
-#   └─ ./modules
-#       └─ ./desktop
-#           └─ ./hyprland
-#               └─ default.nix *
-#
-
 { lib, config, pkgs, ... }:
-
+with lib;
+with lib.frgd;
 let
   inherit (lib) mkEnableOption mkIf;
 
   cfg = config.frgd.desktop.hyprland;
 in {
-  options.frgd.cli-apps.hyprland = {
+  options.frgd.desktop.hyprland = {
     enable = mkEnableOption "Enable the Hyprland window manager";
   };
 

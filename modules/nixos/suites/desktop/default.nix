@@ -14,18 +14,18 @@ in
   config = mkIf cfg.enable {
     frgd = {
       desktop = {
-#        gnome = enabled;
+        #        gnome = enabled;
 
-#        addons = { wallpapers = enabled; };
+        #        addons = { wallpapers = enabled; };
       };
 
       apps = {
         _1password = enabled;
-       # vlc = enabled;
+        vlc = enabled;
         logseq = enabled;
-       # pocketcasts = enabled;
-       # yt-music = enabled;
-       # gparted = enabled;
+        # pocketcasts = enabled;
+        # yt-music = enabled;
+        # gparted = enabled;
       };
     };
   };
