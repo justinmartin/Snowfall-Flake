@@ -31,6 +31,7 @@ in
         comma = enabled;
         btop = enabled;
         direnv = enabled;
+        misc = enabled;
       };
 
       hardware = {

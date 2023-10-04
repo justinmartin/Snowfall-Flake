@@ -13,6 +13,7 @@ in
   config = mkIf cfg.enable {
     frgd = {
       apps = {
+         cider = enabled;
 #        ardour = enabled;
  #       bottles = enabled;
       };
