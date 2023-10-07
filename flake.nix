@@ -55,13 +55,13 @@
 
         namespace = "frgd";
       };
-    systems.modules.nixos = with inputs; [
+      
+      systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         vscode-server.nixosModules.default
+        # nix-colors.nixosModules.default
 
-        # @TODO(jakehamilton): Replace frgd.services.attic now that vault-agent
-        # exists and can force override environment files.
-        # attic.nixosModules.atticd
+
       ];
     };
 }

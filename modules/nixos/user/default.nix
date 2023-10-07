@@ -5,26 +5,6 @@ with lib.frgd;
 let
   cfg = config.frgd.user;
   #defaultIconFileName = "profile.png";
-  defaultIcon = pkgs.stdenvNoCC.mkDerivation {
-    name = "default-icon";
-    src = ./. + "/${defaultIconFileName}";
-
-    dontUnpack = true;
-
-    installPhase = ''
-      cp $src $out
-    '';
-
-    passthru = { fileName = defaultIconFileName; };
-  };
-  propagatedIcon = pkgs.runCommandNoCC "propagated-icon" {
-    passthru = { fileName = cfg.icon.fileName; };
-  } ''
-    local target="$out/share/frgd-icons/user/${cfg.name}"
-    mkdir -p "$target"
-
-    cp ${cfg.icon} "$target/${cfg.icon.fileName}"
-  '';
 in {
   options.frgd.user = with types; {
     name = mkOpt str "justin" "The name to use for the user account.";
@@ -32,8 +12,8 @@ in {
     email = mkOpt str "jus10mar10@gmail.com" "The email of the user.";
     initialPassword = mkOpt str "password"
       "The initial password to use when the user is first created.";
-    icon = mkOpt (nullOr package) defaultIcon
-      "The profile picture to use for the user.";
+    # icon = mkOpt (nullOr package) defaultIcon
+    #   "The profile picture to use for the user.";
     prompt-init = mkBoolOpt true
       "Whether or not to show an initial message when opening a new shell.";
     extraGroups = mkOpt (listOf str) [ ] "Groups for the user to be assigned.";

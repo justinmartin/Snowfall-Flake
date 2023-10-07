@@ -16,7 +16,8 @@ in
         enable = true;
         enableAutosuggestions = true;
         enableCompletion = true;
-        enableSyntaxHighlighting = true;
+        #enableSyntaxHighlighting = true;
+        syntaxHighlighting.enable = true;
 
         initExtra = ''
           # Fix an issue with tmux.
@@ -24,8 +25,6 @@ in
 
           # Use vim bindings.
           set -o vi
-
-          ${pkgs.toilet}/bin/toilet -f future "Plus Ultra" --gay
 
           # Improved vim bindings.
           source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh

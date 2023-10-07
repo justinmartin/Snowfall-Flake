@@ -30,6 +30,9 @@ in
 
   config = mkIf cfg.enable (mkMerge [
     {
+      # imports = [
+      #   inputs.nix-colors.homeManagerModule.default
+      # ];
       assertions = [
         {
           assertion = cfg.name != null;
@@ -45,6 +48,8 @@ in
         username = mkDefault cfg.name;
         homeDirectory = mkDefault cfg.home;
       };
+      # colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+
     }
   ]);
 }

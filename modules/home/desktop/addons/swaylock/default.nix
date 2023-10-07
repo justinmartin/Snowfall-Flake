@@ -22,7 +22,7 @@ in {
 
         fade-in = 0.2;
 
-        effect-blur = "7x5";
+        effect-blur = "12x10";
         #effect-greyscale;
         effect-scale = 0.3;
         #effect-pixelate = 4;
@@ -32,7 +32,7 @@ in {
         indicator-thickness = 20;
         indicator-caps-lock = true;
 
-        key-hl-color = "880033";
+        key-hl-color = "${lib.colorScheme.colors.base00}";
         color = "665c54D9";
 
         separator-color = "00000000";

@@ -18,10 +18,13 @@ in
         capitaine-cursors-themed
       ];
     };
-    xdg.configFile."hypr/hyprland.conf".source = hyprland.conf;
+    xdg.configFile."hypr/hyprland.conf".source = ./config;
     gtk.cursorTheme = "Capitaine Cursors (Gruvbox)";
-
-
-
+    frgd.desktop.addons = {
+      waybar = enabled;
+      swaylock = enabled;
+      # rofi.enabled = true;
+      bemenu = enabled;
+    };
   };
 }
