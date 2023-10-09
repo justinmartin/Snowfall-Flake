@@ -55,10 +55,13 @@
 
         namespace = "frgd";
       };
-      
+
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         vscode-server.nixosModules.default
+        agenix.nixosModules.default
+
+
         # nix-colors.nixosModules.default
 
 

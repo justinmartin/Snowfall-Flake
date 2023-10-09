@@ -1,39 +1,43 @@
 { lib, config, pkgs, ... }:
-
+with lib;
+with lib.frgd;
 let
   inherit (lib) mkEnableOption mkIf;
 
   cfg = config.frgd.security.agenix;
-in {
+in
+{
   options.frgd.security.agenix = {
     enable = mkEnableOption "Agenix";
 
-    taskwarrior = mkOption {
-      type = types.bool;
-      default = false;
-      description = "Enable Taskwarrior Secrets";
+    taskwarrior = {
+      enable = mkBoolOpt false "Whether or not to enable automatic connection to Tailscale";
+    };
+
+    vultr_api_key = {
+      enable = mkiEnableOption "Vultr API Key";
     };
 
   };
   config = mkIf cfg.enable {
-    imports = [ inputs.agenix.nixosModule.default ];
-    taskwarrior = mkIf cfg.taskwarrior {
-      age.secrets."taskwarrior.ca.cert.age" = {
+    age = mkIf cfg.taskwarrior.enable {
+
+      secrets."taskwarrior.ca.cert.age" = {
         file = ../../secrets/taskwarrior.ca.cert.age;
         mode = "770";
         owner = "justin";
       };
-      age.secrets."taskwarrior.public.certificate.age" = {
+      secrets."taskwarrior.public.certificate.age" = {
         file = ../../secrets/taskwarrior.public.certificate.age;
         mode = "770";
         owner = "justin";
       };
-      age.secrets."taskwarrior.private.key.age" = {
+      secrets."taskwarrior.private.key.age" = {
         file = ../../secrets/taskwarrior.private.key.age;
         mode = "770";
         owner = "justin";
       };
     };
+   
   };
-
 }
