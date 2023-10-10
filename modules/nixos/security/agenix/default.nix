@@ -1,10 +1,11 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 with lib;
 with lib.frgd;
 let
   inherit (lib) mkEnableOption mkIf;
 
   cfg = config.frgd.security.agenix;
+  inherit (inputs) agenix;
 in
 {
   options.frgd.security.agenix = {
@@ -20,20 +21,22 @@ in
 
   };
   config = mkIf cfg.enable {
+    environment.systemPackages = [ agenix ];
+
     age = mkIf cfg.taskwarrior.enable {
 
       secrets."taskwarrior.ca.cert.age" = {
-        file = ../../secrets/taskwarrior.ca.cert.age;
+        file = ../../../../secrets/taskwarrior.ca.cert.age;
         mode = "770";
         owner = "justin";
       };
       secrets."taskwarrior.public.certificate.age" = {
-        file = ../../secrets/taskwarrior.public.certificate.age;
+        file = ../../../../secrets/taskwarrior.public.certificate.age;
         mode = "770";
         owner = "justin";
       };
       secrets."taskwarrior.private.key.age" = {
-        file = ../../secrets/taskwarrior.private.key.age;
+        file = ../../../../secrets/taskwarrior.private.key.age;
         mode = "770";
         owner = "justin";
       };
