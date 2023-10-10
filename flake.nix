@@ -56,6 +56,11 @@
         namespace = "frgd";
       };
 
+      systems.modules.darwin = with inputs; [
+        agenix.darwinModules.default
+        home-manager.darwinModules.home-manager
+      ];
+
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         vscode-server.nixosModules.default

@@ -21,6 +21,7 @@ in
       clac
       wget
       usbutils
+      gcc
     ];
   };
 }

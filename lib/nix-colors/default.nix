@@ -1,10 +1,11 @@
 { inputs
 , snowfall-inputs
 , lib
+, ...
 }:
-
+let
+  inherit (inputs) nix-colors;
+in
 {
-  imports = [inputs.nix-colors.nixosModule.default];
-  
-  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
 }
