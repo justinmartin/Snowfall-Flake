@@ -15,6 +15,8 @@ in
       packages = with pkgs; [
         less
         neovim
+        rnix-lsp
+        nixfmt
       ];
 
       sessionVariables = {
