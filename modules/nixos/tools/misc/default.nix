@@ -14,7 +14,7 @@ in
 
     environment.systemPackages = with pkgs; [
       fzf
-      # killall
+      #killall
       unzip
       file
       jq
@@ -22,6 +22,12 @@ in
       wget
       usbutils
       gcc
+      bat
+      neofetch
+      zip
+      p7zip
+      unzip
+      ncdu
     ];
   };
 }
