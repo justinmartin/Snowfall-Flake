@@ -14,21 +14,27 @@ in
     home = {
       packages = with pkgs; [
         less
-        neovim
         rnix-lsp
         nixfmt
+        ripgrep
       ];
 
       sessionVariables = {
         PAGER = "less";
         MANPAGER = "less";
         NPM_CONFIG_PREFIX = "$HOME/.npm-global";
-        EDITOR = "nvim";
       };
 
       shellAliases = {
         vimdiff = "nvim -d";
       };
+    };
+
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
     };
 
     xdg.configFile = {
