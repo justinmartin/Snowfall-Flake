@@ -54,8 +54,8 @@ in
           log-lines = 50;
           sandbox = "relaxed";
           auto-optimise-store = true;
-          trusted-users = users;
-          allowed-users = users;
+          # trusted-users = users;
+          # allowed-users = users;
 
           substituters =
             [ cfg.default-substituter.url ]
