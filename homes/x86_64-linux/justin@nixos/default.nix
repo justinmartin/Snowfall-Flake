@@ -1,5 +1,5 @@
 { lib, pkgs, config, osConfig ? { }, format ? "unknown", ... }:
-
+with lib;
 with lib.frgd;
 {
   frgd = {
@@ -19,6 +19,7 @@ with lib.frgd;
     tools = {
       git = enabled;
       direnv = enabled;
+      misc = enabled;
     };
   };
 }

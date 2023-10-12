@@ -10,9 +10,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    frgd.home.configFile."wgetrc".text = "";
 
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       fzf
       #killall
       unzip

@@ -10,6 +10,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ inkscape-with-extensions google-fonts ];
+    home.packages = with pkgs; [ inkscape-with-extensions google-fonts ];
   };
 }

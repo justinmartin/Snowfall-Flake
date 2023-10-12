@@ -10,5 +10,7 @@ in
   };
 
   config =
-    mkIf cfg.enable { environment.systemPackages = with pkgs; [ logseq ]; };
+    mkIf cfg.enable {
+      home.packages = with pkgs; [ logseq ];
+    };
 }
