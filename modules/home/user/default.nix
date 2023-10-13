@@ -47,8 +47,9 @@ in
       home = {
         username = mkDefault cfg.name;
         homeDirectory = mkDefault cfg.home;
+        sessionVariables = { EDITOR = "nvim"; };
+
       };
-      # colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
 
     }
   ]);
