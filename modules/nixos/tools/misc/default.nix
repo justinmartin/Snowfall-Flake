@@ -28,6 +28,7 @@ in
       p7zip
       unzip
       ncdu
+      lazygit
     ];
   };
 }
