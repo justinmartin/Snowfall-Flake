@@ -5,14 +5,14 @@ let
   inherit (lib) mkEnableOption mkIf;
 
   cfg = config.frgd.desktop.hyprland;
-in {
+in
+{
   options.frgd.desktop.hyprland = {
     enable = mkEnableOption "Enable the Hyprland window manager";
   };
 
   config = mkIf cfg.enable {
 
-    #TODO imports = [ ../../programs/waybar.nix ];
 
     services.dbus.enable = true;
 
@@ -45,6 +45,16 @@ in {
         wl-clipboard
         wlr-randr
       ];
+    };
+
+    frgd = {
+      desktop.addons = {
+        waybar = enabled;
+        foot = enabled;
+        rofi = enabled;
+        xdg-portal = enabled;
+
+      };
     };
 
     programs = { hyprland.enable = true; };
