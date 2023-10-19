@@ -14,6 +14,7 @@ with lib.frgd;
       home-manager = enabled;
       tmux = enabled;
       bottom = enabled;
+      ranger = enabled;
     };
 
     tools = {
