@@ -9,7 +9,7 @@ with lib.frgd; {
       tmux = enabled;
       bottom = enabled;
       #zellij = enabled;
-      starship = enabled;
+      # starship = enabled;
       fish = enabled;
     };
 
