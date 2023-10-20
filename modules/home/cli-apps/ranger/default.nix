@@ -3,16 +3,18 @@
 with lib;
 with lib.frgd;
 let
-  cfg = config.frgd.desktop.addons.rofi;
+  cfg = config.frgd.cli-apps.ranger;
 in
 {
-  options.frgd.desktop.addons.rofi = with types; {
-    enable = mkBoolOpt false "rofi";
+  options.frgd.cli-apps.ranger = with types; {
+    enable = mkBoolOpt false "ranger";
   };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      rofi
+      ranger
+
     ];
   };
 }
+

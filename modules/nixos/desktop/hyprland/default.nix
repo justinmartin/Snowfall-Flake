@@ -49,10 +49,10 @@ in
 
     frgd = {
       desktop.addons = {
-        waybar = enabled;
-        foot = enabled;
-        rofi = enabled;
-        xdg-portal = enabled;
+        #waybar = enabled;
+        #foot = enabled;
+        #rofi = enabled;
+        #xdg-portal = enabled;
 
       };
     };
