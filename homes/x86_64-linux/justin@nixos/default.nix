@@ -1,7 +1,6 @@
 { lib, pkgs, config, osConfig ? { }, format ? "unknown", ... }:
 with lib;
-with lib.frgd;
-{
+with lib.frgd; {
   frgd = {
     user = {
       enable = true;

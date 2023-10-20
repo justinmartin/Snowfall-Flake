@@ -29,6 +29,8 @@ in
       unzip
       ncdu
       lazygit
-    ];
+      lf
+      broot
+    ]
   };
 }
