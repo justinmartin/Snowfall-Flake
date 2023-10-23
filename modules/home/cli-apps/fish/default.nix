@@ -12,32 +12,39 @@ in {
     programs.fish = {
       enable = true;
       shellAliases = {
-        fs = "sudo nixos-rebuild switch --flake ~/flake#";
-        ds = "darwin-rebuild switch --flake ~/flake#";
+        fs = "sudo nixos-rebuild switch --flake ~/Snowfall-Flake/#";
+        ds = "darwin-rebuild switch --flake ~/Snowfall-Flake/#";
       };
       # shellInit = "op completion fish | source";
     };
-    programs.direnv = { enable = true; };
 
     home.packages = with pkgs.fishPlugins; [
       z
       #hydro
-      fzf
+      #      fzf
+      #fzf-fish
       done
-      hydro
+      #hydro
       colored-man-pages
       pkgs.nerdfonts
-      pkgs.nerd-font-patcher
-      pkgs.powerline
-      pkgs.powerline-fonts
+      #pkgs.nerd-font-patcher
+      #pkgs.powerline
+      #pkgs.powerline-fonts
     ];
 
+    programs.fzf = {
+      enable = true;
+      enableFishIntegration = true;
+
+    };
     programs.starship = {
       enable = true;
+      enableFishIntegration = true;
       settings = {
-        add_newline = false;
-        format =
-          "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+        add_newline = true;
+        #format =
+        #"$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+        # "$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
         shlvl = {
           disabled = false;
           symbol = "ﰬ";
