@@ -2,11 +2,19 @@
 with lib;
 with lib.frgd; {
   services.nix-daemon.enable = true;
-   environment.shells = with pkgs; [
-    fish
-    zsh
-  ];
+  environment.shells = with pkgs; [ fish zsh ];
 
-  frgd = { homebrew = enabled; nix-darwin = enabled;};
+  frgd = {
+    homebrew = {
+      enable = true;
+      casks.enable = true;
+    };
+
+    nix-darwin = enabled;
+    security.agenix = {
+      enable = true;
+      taskwarrior.enable = true; 
+    };
+  };
 }
 

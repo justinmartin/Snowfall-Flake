@@ -8,6 +8,7 @@ with lib.frgd; {
       home-manager = enabled;
       tmux = enabled;
       bottom = enabled;
+      taskwarrior = enabled;
       #zellij = enabled;
       # starship = enabled;
       fish = enabled;
