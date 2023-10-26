@@ -42,18 +42,18 @@ in {
       enableFishIntegration = true;
       settings = {
         add_newline = true;
-        #format =
-        #"$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
-        # "$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+        format =
+          "$sudo$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$battery$character";
+        #"$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
         shlvl = {
           disabled = false;
-          symbol = "ﰬ";
-          style = "bright-red bold";
+          symbol = "";
+          style = "bright-white bold";
         };
         shell = {
           disabled = false;
           format = "$indicator";
-          fish_indicator = "";
+          fish_indicator = "[><> ](bright-white bold)";
           bash_indicator = "[BASH](bright-white) ";
           zsh_indicator = "[ZSH](bright-white) ";
         };

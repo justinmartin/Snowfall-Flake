@@ -31,6 +31,6 @@ in
       lazygit
       lf
       broot
-    ]
+    ];
   };
 }
