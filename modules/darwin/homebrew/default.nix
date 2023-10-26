@@ -35,6 +35,8 @@ in {
         "popclip"
         "numi"
         "visual-studio-code"
+        "vial"
+        "beeper"
       ];
     };
 
