@@ -44,6 +44,9 @@
 
   outputs = inputs:
     inputs.snowfall-lib.mkFlake {
+       channels-config = {
+        allowUnfree = true;
+      };
       inherit inputs;
 
       src = ./.;
