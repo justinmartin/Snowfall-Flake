@@ -5,8 +5,7 @@ with lib.frgd;
 let
   cfg = config.frgd.user;
   #defaultIconFileName = "profile.png";
-in
-{
+in {
   options.frgd.user = with types; {
     name = mkOpt str "justin" "The name to use for the user account.";
     fullName = mkOpt str "Justin Martin" "The full name of the user.";
@@ -23,16 +22,9 @@ in
   };
 
   config = {
-    environment.systemPackages = with pkgs;
-      [
-        fishPlugins.fzf
-        fishPlugins.done
-        fishPlugins.hydro
-      ];
+    environment.systemPackages = with pkgs; [ ];
 
-    programs.fish = {
-      enable = true;
-    };
+    programs.fish = { enable = true; };
 
     frgd.home = {
       file = { };
