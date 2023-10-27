@@ -2,17 +2,9 @@
 
 with lib;
 with lib.frgd;
-let
-  cfg = config.frgd.tools.attic;
-in
-{
-  options.frgd.tools.attic = {
-    enable = mkEnableOption "Attic";
-  };
+let cfg = config.frgd.tools.attic;
+in {
+  options.frgd.tools.attic = { enable = mkEnableOption "Attic"; };
 
-  config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      attic
-    ];
-  };
+  config = mkIf cfg.enable { environment.systemPackages = with pkgs; [ ]; };
 }
