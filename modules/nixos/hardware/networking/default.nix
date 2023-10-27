@@ -3,8 +3,7 @@
 with lib;
 with lib.frgd;
 let cfg = config.frgd.hardware.networking;
-in
-{
+in {
   options.frgd.hardware.networking = with types; {
     enable = mkBoolOpt false "Whether or not to enable networking support";
     hosts = mkOpt attrs { }
@@ -28,5 +27,6 @@ in
     # Fixes an issue that normally causes nixos-rebuild to fail.
     # https://github.com/NixOS/nixpkgs/issues/180175
     systemd.services.NetworkManager-wait-online.enable = false;
+    frgd.services.avahi = enabled;
   };
 }
