@@ -1,11 +1,14 @@
 { lib, config, pkgs, ... }:
-
+with lib;
+with lib.frgd;
 let
   inherit (lib) mkEnableOption mkIf;
 
   cfg = config.frgd.desktop.addons.swaylock;
 in {
-  options.frgd.desktop.addons.swaylock = { enable = mkEnableOption "Swaylock"; };
+  options.frgd.desktop.addons.swaylock = {
+    enable = mkEnableOption "Swaylock";
+  };
 
   config = mkIf cfg.enable {
     programs.swaylock = {
@@ -32,7 +35,7 @@ in {
         indicator-thickness = 20;
         indicator-caps-lock = true;
 
-        key-hl-color = "${lib.colorScheme.colors.base00}";
+        key-hl-color = "${colorScheme.colors.base00}";
         color = "665c54D9";
 
         separator-color = "00000000";

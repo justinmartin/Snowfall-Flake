@@ -3,8 +3,7 @@
 with lib;
 with lib.frgd;
 let cfg = config.frgd.desktop.addons.waybar;
-in
-{
+in {
   options.frgd.desktop.addons.waybar = with types; {
     enable =
       mkBoolOpt false "Whether to enable Waybar in the desktop environment.";
@@ -13,9 +12,8 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ waybar ];
 
-    xdg.configFile."waybar/config".source = ./config;
-    xdg.configFile."waybar/style.css".source = ./style.css;
-
+    #xdg.configFile."waybar/config".source = ./config;
+    #xdg.configFile."waybar/style.css".source = ./style.css;
 
     # Home-manager waybar config
     programs.waybar = {
@@ -96,8 +94,7 @@ in
             #on-click-right = "${pkgs.alacritty}/bin/alacritty -e nmtui";
           };
           pulseaudio = {
-            format =
-              "<span font='11'>{icon}</span> {volume}% {format_source} ";
+            format = "<span font='11'>{icon}</span> {volume}% {format_source} ";
             format-bluetooth =
               "<span font='11'>{icon}</span> {volume}% {format_source} ";
             format-bluetooth-muted =
@@ -117,8 +114,7 @@ in
             };
             tooltip-format = "{desc}, {volume}%";
             on-click = "${pkgs.pamixer}/bin/pamixer -t";
-            on-click-right =
-              "${pkgs.pamixer}/bin/pamixer --default-source -t";
+            on-click-right = "${pkgs.pamixer}/bin/pamixer --default-source -t";
             on-click-middle = "${pkgs.pavucontrol}/bin/pavucontrol";
           };
           "custom/sink" = {
@@ -130,28 +126,27 @@ in
         };
       };
     };
-    home.file.".config/waybar/script/sink.sh" =
-      {
-        # Custom script: Toggle speaker/headset
-        text = ''
-          #!/bin/sh
+    home.file.".config/waybar/script/sink.sh" = {
+      # Custom script: Toggle speaker/headset
+      text = ''
+        #!/bin/sh
 
-          ID1=$(awk '/ Built-in Audio Analog Stereo/ {sub(/.$/,"",$2); print $2 }' <(${pkgs.wireplumber}/bin/wpctl status) | head -n 1)
-          ID2=$(awk '/ S10 Bluetooth Speaker/ {sub(/.$/,"",$2); print $2 }' <(${pkgs.wireplumber}/bin/wpctl status) | sed -n 2p)
+        ID1=$(awk '/ Built-in Audio Analog Stereo/ {sub(/.$/,"",$2); print $2 }' <(${pkgs.wireplumber}/bin/wpctl status) | head -n 1)
+        ID2=$(awk '/ S10 Bluetooth Speaker/ {sub(/.$/,"",$2); print $2 }' <(${pkgs.wireplumber}/bin/wpctl status) | sed -n 2p)
 
-          HEAD=$(awk '/ Built-in Audio Analog Stereo/ { print $2 }' <(${pkgs.wireplumber}/bin/wpctl status | grep "*") | sed -n 2p)
-          SPEAK=$(awk '/ S10 Bluetooth Speaker/ { print $2 }' <(${pkgs.wireplumber}/bin/wpctl status | grep "*") | head -n 1)
+        HEAD=$(awk '/ Built-in Audio Analog Stereo/ { print $2 }' <(${pkgs.wireplumber}/bin/wpctl status | grep "*") | sed -n 2p)
+        SPEAK=$(awk '/ S10 Bluetooth Speaker/ { print $2 }' <(${pkgs.wireplumber}/bin/wpctl status | grep "*") | head -n 1)
 
-          if [[ $HEAD = "*" ]]; then
-            ${pkgs.wireplumber}/bin/wpctl set-default $ID2
-            echo -e "{\"text\":\""蓼"\"}"
-          elif [[ $SPEAK = "*" ]]; then
-            ${pkgs.wireplumber}/bin/wpctl set-default $ID1
-            echo -e "{\"text\":\"""\"}"
-          fi
-        '';
-        executable = true;
-      };
+        if [[ $HEAD = "*" ]]; then
+          ${pkgs.wireplumber}/bin/wpctl set-default $ID2
+          echo -e "{\"text\":\""蓼"\"}"
+        elif [[ $SPEAK = "*" ]]; then
+          ${pkgs.wireplumber}/bin/wpctl set-default $ID1
+          echo -e "{\"text\":\"""\"}"
+        fi
+      '';
+      executable = true;
+    };
   };
 
 }

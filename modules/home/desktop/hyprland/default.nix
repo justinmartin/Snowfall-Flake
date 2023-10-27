@@ -2,10 +2,8 @@
 
 with lib;
 with lib.frgd;
-let
-  cfg = config.frgd.desktop.hyprland;
-in
-{
+let cfg = config.frgd.desktop.hyprland;
+in {
   options.frgd.desktop.hyprland = with types; {
     enable = mkBoolOpt false "hyprland";
   };
@@ -13,17 +11,18 @@ in
   config = mkIf cfg.enable {
 
     home = {
-      packages = with pkgs; [
-        # Packages installed
-        capitaine-cursors-themed
-      ];
+      packages = with pkgs;
+        [
+          # Packages installed
+          capitaine-cursors-themed
+        ];
     };
     xdg.configFile."hypr/hyprland.conf".source = ./config;
     gtk.cursorTheme = "Capitaine Cursors (Gruvbox)";
     frgd.desktop.addons = {
       waybar = enabled;
       swaylock = enabled;
-      # rofi.enabled = true;
+      rofi = enabled;
       bemenu = enabled;
     };
   };
