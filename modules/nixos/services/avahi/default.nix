@@ -4,8 +4,7 @@ let
   cfg = config.frgd.services.avahi;
 
   inherit (lib) types mkEnableOption mkIf;
-in
-{
+in {
   options.frgd.services.avahi = with types; {
     enable = mkEnableOption "Avahi";
   };
