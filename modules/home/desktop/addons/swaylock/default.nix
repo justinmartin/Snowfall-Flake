@@ -70,5 +70,12 @@ in {
 
       };
     };
+
+    security.pam.services.swaylock = { };
+    powerManagement = {
+      enable = true;
+      powerDownCommands = "swaylock -fF";
+    };
+
   };
 }
