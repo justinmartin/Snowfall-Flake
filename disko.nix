@@ -16,7 +16,7 @@
                 mountpoint = "/boot";
               };
             };
-            zfs = {truetrue
+            zfs = {
               size = "100%";
               content = {
                 type = "zfs";
