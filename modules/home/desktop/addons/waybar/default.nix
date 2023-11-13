@@ -10,12 +10,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ waybar ];
-
-    #xdg.configFile."waybar/config".source = ./config;
-    #xdg.configFile."waybar/style.css".source = ./style.css;
+    home.packages = with pkgs; [ waybar pavucontrol wireplumber ];
 
     # Home-manager waybar config
+
     programs.waybar = {
       enable = true;
       systemd = {
@@ -29,7 +27,7 @@ in {
           layer = "top";
           position = "top";
           height = 20;
-          tray = { spacing = 5; };
+          tray = { spacing = 15; };
           #modules-center = [ "clock" ];
           modules-left = [ "custom/menu" "hyprland/workspaces" ];
           modules-center = [ "hyprland/window" ];
