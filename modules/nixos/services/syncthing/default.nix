@@ -1,15 +1,13 @@
-#TODO Fix user settings to pull from configuration instead of being hardcoded.
+# TODO Fix user settings to pull from configuration instead of being hardcoded.
 
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }:
 
 let
   inherit (lib) mkEnableOption mkIf;
 
   cfg = config.frgd.services.syncthing;
 in {
-  options.frgd.services.syncthing = {
-    enable = mkEnableOption "Syncthing";
-  };
+  options.frgd.services.syncthing = { enable = mkEnableOption "Syncthing"; };
 
   config = mkIf cfg.enable {
     services = {
