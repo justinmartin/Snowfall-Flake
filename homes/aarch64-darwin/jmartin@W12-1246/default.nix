@@ -2,6 +2,8 @@
 with lib;
 with lib.frgd; {
   frgd = {
+    apps = { circuit-python-editors = enabled; };
+
     cli-apps = {
       #zsh = enabled;
       neovim = enabled;
