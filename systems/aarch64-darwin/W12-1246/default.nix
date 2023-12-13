@@ -13,7 +13,7 @@ with lib.frgd; {
     nix-darwin = enabled;
     security.agenix = {
       enable = true;
-      taskwarrior.enable = true; 
+      taskwarrior.enable = true;
     };
   };
 }
