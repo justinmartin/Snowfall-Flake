@@ -9,7 +9,7 @@ with lib.frgd; {
       neovim = enabled;
       home-manager = enabled;
       tmux = enabled;
-      bottom = enabled;
+      system-monitors = enabled;
       taskwarrior = enabled;
       #zellij = enabled;
       # starship = enabled;
@@ -19,6 +19,7 @@ with lib.frgd; {
     tools = {
       git = enabled;
       direnv = enabled;
+      bat = enabled;
       #misc = enabled;
     };
   };
