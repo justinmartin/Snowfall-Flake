@@ -3,8 +3,7 @@
 with lib;
 with lib.frgd;
 let cfg = config.frgd.home;
-in
-{
+in {
   # imports = with inputs; [
   #   home-manager.nixosModules.home-manager
   # ];
@@ -12,8 +11,8 @@ in
   options.frgd.home = with types; {
     file = mkOpt attrs { }
       (mdDoc "A set of files to be managed by home-manager's `home.file`.");
-    configFile = mkOpt attrs { }
-      (mdDoc "A set of files to be managed by home-manager's `xdg.configFile`.");
+    configFile = mkOpt attrs { } (mdDoc
+      "A set of files to be managed by home-manager's `xdg.configFile`.");
     extraOptions = mkOpt attrs { } "Options to pass directly to home-manager.";
   };
 
