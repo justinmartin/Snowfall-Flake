@@ -35,18 +35,28 @@
       # Flake requires some packages that aren't on 22.05, but are available on unstable.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
     agenix.url = "github:yaxitech/ragenix";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
+    # flake-parts
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    flake-root.url = "github:srid/flake-root";
+    mission-control.url = "github:Platonic-Systems/mission-control";
+
   };
 
   outputs = inputs:
     inputs.snowfall-lib.mkFlake {
-       channels-config = {
-        allowUnfree = true;
-      };
+      channels-config = { allowUnfree = true; };
       inherit inputs;
 
       src = ./.;
@@ -68,10 +78,9 @@
         home-manager.nixosModules.home-manager
         vscode-server.nixosModules.default
         agenix.nixosModules.default
-
+        disko.nixosModules.disko
 
         # nix-colors.nixosModules.default
-
 
       ];
     };
