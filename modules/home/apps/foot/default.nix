@@ -8,6 +8,7 @@ in {
   options.frgd.apps.foot = { enable = mkEnableOption "Foot"; };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [ nerdfonts ];
     programs.foot = {
       enable = true;
       server.enable = true;

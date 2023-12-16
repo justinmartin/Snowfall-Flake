@@ -2,12 +2,14 @@
 with lib;
 with lib.frgd; {
   frgd = {
+    apps = { circuit-python-editors = enabled; };
+
     cli-apps = {
       #zsh = enabled;
       neovim = enabled;
       home-manager = enabled;
       tmux = enabled;
-      bottom = enabled;
+      system-monitors = enabled;
       taskwarrior = enabled;
       #zellij = enabled;
       # starship = enabled;
@@ -17,6 +19,7 @@ with lib.frgd; {
     tools = {
       git = enabled;
       direnv = enabled;
+      bat = enabled;
       #misc = enabled;
     };
   };

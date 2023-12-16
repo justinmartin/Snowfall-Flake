@@ -12,5 +12,7 @@ with lib.frgd; {
     archetypes.workstation = enabled;
     archetypes.gaming = enabled;
     services.klipper = enabled;
+
+    desktop = { addons = { swaylock = enabled; }; };
   };
 }
