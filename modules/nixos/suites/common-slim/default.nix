@@ -10,25 +10,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
-      # pkgs.frgd.list-iommu
-    ];
 
     frgd = {
       nix = enabled;
-
-      # @TODO(jakehamilton): Enable this once Attic is configured again.
-      # cache.public = enabled;
-
-      cli-apps = {
-        # flake = enabled;
-      };
 
       tools = {
         git = enabled;
         fup-repl = enabled;
         comma = enabled;
-        btop = enabled;
         direnv = enabled;
         misc = enabled;
       };
@@ -44,9 +33,7 @@ in {
         avahi = enabled;
       };
 
-      security = {
-        # doas = enabled;
-      };
+      security = { doas = enabled; };
 
       system = {
         boot = enabled;
