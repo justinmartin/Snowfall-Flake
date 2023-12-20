@@ -1,4 +1,4 @@
-{ lib, pkgs, config, osConfig ? { }, format ? "unknown", ... }:
+{ lib, ... }:
 with lib;
 with lib.frgd; {
   frgd = {
