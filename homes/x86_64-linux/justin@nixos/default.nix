@@ -12,7 +12,6 @@ with lib.frgd; {
       neovim = enabled;
       home-manager = enabled;
       tmux = enabled;
-      bottom = enabled;
       ranger = enabled;
     };
 
