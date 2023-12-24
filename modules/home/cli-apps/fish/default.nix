@@ -26,10 +26,9 @@ in {
       done
       #hydro
       colored-man-pages
-      pkgs.nerdfonts
       #pkgs.nerd-font-patcher
-      #pkgs.powerline
-      #pkgs.powerline-fonts
+      pkgs.powerline
+      pkgs.powerline-fonts
     ];
 
     programs.fzf = {
