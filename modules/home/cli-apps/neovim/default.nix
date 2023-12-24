@@ -4,30 +4,21 @@ let
   inherit (lib) mkEnableOption mkIf;
 
   cfg = config.frgd.cli-apps.neovim;
-in
-{
-  options.frgd.cli-apps.neovim = {
-    enable = mkEnableOption "Neovim";
-  };
+in {
+  options.frgd.cli-apps.neovim = { enable = mkEnableOption "Neovim"; };
 
   config = mkIf cfg.enable {
     home = {
-      packages = with pkgs; [
-        less
-        rnix-lsp
-        nixfmt
-        ripgrep
-      ];
+      packages = with pkgs; [ less rnix-lsp nixfmt ripgrep ];
 
       sessionVariables = {
         PAGER = "less";
         MANPAGER = "less";
         NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+        EDITOR = "nvim";
       };
 
-      shellAliases = {
-        vimdiff = "nvim -d";
-      };
+      shellAliases = { vimdiff = "nvim -d"; };
     };
 
     programs.neovim = {
@@ -37,8 +28,6 @@ in
       vimAlias = true;
     };
 
-    xdg.configFile = {
-      "dashboard-nvim/.keep".text = "";
-    };
+    xdg.configFile = { "dashboard-nvim/.keep".text = ""; };
   };
 }
