@@ -39,6 +39,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix.url = "github:Mic92/sops-nix";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
     agenix.url = "github:yaxitech/ragenix";
@@ -78,6 +79,7 @@
         home-manager.nixosModules.home-manager
         vscode-server.nixosModules.default
         agenix.nixosModules.default
+        sops-nix.nixosModules.sops
         disko.nixosModules.disko
 
         # nix-colors.nixosModules.default
