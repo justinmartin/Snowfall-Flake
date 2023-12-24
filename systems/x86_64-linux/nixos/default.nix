@@ -28,6 +28,4 @@ with lib.frgd; {
   services.vscode-server.enable = true;
   programs.nix-ld.enable = true;
 
-  system.stateVersion = "23.05"; # Did you read the comment?
-
 }
