@@ -27,6 +27,7 @@ in {
       unzip
       ncdu
       bottom
+      fast-cli
     ];
   };
 }
