@@ -41,7 +41,9 @@ in {
     })
     (mkIf (cfg.vultr_api_key.enable) { sops.secrets.vultr_api_key = { }; })
     (mkIf (cfg.matrix_registration_shared_secret.enable) {
-      sops.secrets.matrix_registration_shared_secret = { };
+      sops.secrets.matrix_registration_shared_secret = {
+        owner = "matrix-synapse";
+      };
     })
   ]);
 }

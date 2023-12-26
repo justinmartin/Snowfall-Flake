@@ -18,6 +18,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    frgd = { security.sops.matrix_registration_shared_secret = enabled; };
     networking.firewall.allowedTCPPorts = [ 80 443 ];
 
     #  services.postgresql.enable = true;
@@ -97,7 +98,8 @@ in {
           compress = true;
         }];
       }];
-      extraConfigFiles = [ config.age.secrets.matrix_registration_secret.path ];
+      extraConfigFiles =
+        [ config.sops.secrets.matrix_registration_shared_secret.path ];
     };
 
     security.acme = {
@@ -105,7 +107,7 @@ in {
       defaults = {
         email = "jus10mar10@gmail.com";
         dnsProvider = "vultr";
-        credentialsFile = /run/agenix/vultr_api_key;
+        credentialsFile = config.sops.secrets.vultr_api_key.path;
 
         # Suplying password files like this will make your credentials world-readable
         # in the Nix store. This is for demonstration purpose only, do not use this in production.

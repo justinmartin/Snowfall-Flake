@@ -15,7 +15,10 @@ with lib.frgd; {
 
   frgd = {
     archetypes.server.enable = true;
-    services = { wireguard-server = { enable = true; }; };
+    services = {
+      matrix-synapse = enabled;
+      wireguard-server = { enable = true; };
+    };
     security = {
       agenix = {
         enable = true;
