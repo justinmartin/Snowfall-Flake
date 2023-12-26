@@ -21,5 +21,4 @@ with lib.frgd; {
     };
   };
 
-  system.stateVersion = "23.11";
 }

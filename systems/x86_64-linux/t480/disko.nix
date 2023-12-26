@@ -49,7 +49,7 @@
             mountpoint = "/nix";
             options."com.sun:auto-snapshot" = "false";
           };
-          home_jusitn = {
+          home_justin = {
             type = "zfs_fs";
             mountpoint = "/home/justin";
             options."com.sun:auto-snapshot" = "true";
