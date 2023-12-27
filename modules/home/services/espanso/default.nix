@@ -1,16 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 with lib;
 with lib.frgd;
-let
-  cfg = config.frgd.services.espanso;
-in
-{
+let cfg = config.frgd.services.espanso;
+in {
   options.frgd.services.espanso = with types; {
     enable = mkBoolOpt false "espanso";
-    western_snippets = {
-      enable = mkBoolOpt false "Enable Western snippets";
-    };
+    western_snippets = { enable = mkBoolOpt false "Enable Western snippets"; };
 
   };
 
@@ -19,10 +15,8 @@ in
 
     xdg.configFile."espanso/config/default.yml".source = ./config.yml;
     xdg.configFile."espanso/matches/base.yml".source = ./matches.yml;
-
-    xdg.configFile."espanso/matches/western.yml" = mkIf cfg.western_snippets.enable {
-      source = ./western.yml;
-    };
+    xdg.configFile."espanso/matches/western.yml" =
+      mkIf cfg.western_snippets.enable { source = ./western.yml; };
 
   };
 }

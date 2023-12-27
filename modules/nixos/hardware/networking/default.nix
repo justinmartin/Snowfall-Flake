@@ -1,4 +1,4 @@
-{ options, config, pkgs, lib, ... }:
+{ config, lib, ... }:
 
 with lib;
 with lib.frgd;

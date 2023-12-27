@@ -27,7 +27,5 @@ in {
       viAlias = true;
       vimAlias = true;
     };
-
-    xdg.configFile = { "dashboard-nvim/.keep".text = ""; };
   };
 }

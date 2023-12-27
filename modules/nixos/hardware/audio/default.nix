@@ -1,8 +1,4 @@
-{ options, config, pkgs, lib, ... }:
-
-# @FIXME(jakehamilton): The transition to wireplumber from media-session has completely
-# broken my setup. I'll need to invest some time to figure out how to override Alsa things
-# again...
+{ config, pkgs, lib, ... }:
 
 with lib;
 with lib.frgd;
@@ -10,9 +6,9 @@ let
   cfg = config.frgd.hardware.audio;
 
   lua-format = {
-    type = with lib.types; let
-      valueType = nullOr
-        (oneOf [
+    type = with lib.types;
+      let
+        valueType = nullOr (oneOf [
           bool
           int
           float
@@ -21,24 +17,32 @@ let
           (attrsOf valueType)
           (listOf valueType)
         ]) // {
-        description = "Lua value";
-      };
-    in
-    valueType;
+          description = "Lua value";
+        };
+      in valueType;
 
     generate = name: value:
       let
         toLuaValue = value:
-          if value == null then "null" else
-          if value == true then "true" else
-          if value == false then "false" else
-          if builtins.isInt value || builtins.isFloat value then builtins.toString value else
-          if builtins.isString value then toLuaString value else
-          if builtins.isAttrs value then toLuaTable value else
-          if builtins.isList value then toLuaList value else
-          builtins.abort "Unsupported value used with formats.lua.generate: ${value}";
+          if value == null then
+            "null"
+          else if value == true then
+            "true"
+          else if value == false then
+            "false"
+          else if builtins.isInt value || builtins.isFloat value then
+            builtins.toString value
+          else if builtins.isString value then
+            toLuaString value
+          else if builtins.isAttrs value then
+            toLuaTable value
+          else if builtins.isList value then
+            toLuaList value
+          else
+            builtins.abort
+            "Unsupported value used with formats.lua.generate: ${value}";
 
-        toLuaString = value: "\"${builtins.toString value}\"";
+        toLuaString = value: ''"${builtins.toString value}"'';
 
         toLuaTable = value:
           let
@@ -46,17 +50,14 @@ let
               (name: value: "[${toLuaString name}] = ${toLuaValue value}")
               value;
             content = concatStringsSep ", " pairs;
-          in
-          "{ ${content} }";
+          in "{ ${content} }";
 
         toLuaList = value:
           let
             parts = builtins.map toLuaValue value;
             content = concatStringsSep ", " parts;
-          in
-          "{ ${content} }";
-      in
-      toLuaValue value;
+          in "{ ${content} }";
+      in toLuaValue value;
   };
 
   pipewire-config = {
@@ -68,13 +69,17 @@ let
         flags = [ "ifexists" "nofail" ];
       }
       { name = "libpipewire-module-protocol-native"; }
-      { name = "libpipewire-module-profiler"; }
+      {
+        name = "libpipewire-module-profiler";
+      }
       # {
       #   name = "libpipewire-module-metadata";
       #   flags = [ "ifexists" "nofail" ];
       # }
       { name = "libpipewire-module-spa-device-factory"; }
-      { name = "libpipewire-module-spa-node-factory"; }
+      {
+        name = "libpipewire-module-spa-node-factory";
+      }
       # {
       #   name = "libpipewire-module-client-node";
       #   flags = [ "ifexists" "nofail" ];
@@ -96,16 +101,19 @@ let
       { name = "libpipewire-module-session-manager"; }
     ] ++ cfg.modules;
     "context.components" = [
-      { name = "libwireplumber-module-lua-scripting"; type = "module"; }
-      { name = "config.lua"; type = "config/lua"; }
+      {
+        name = "libwireplumber-module-lua-scripting";
+        type = "module";
+      }
+      {
+        name = "config.lua";
+        type = "config/lua";
+      }
     ];
   };
 
-  alsa-config = {
-    alsa_monitor = cfg.alsa-monitor;
-  };
-in
-{
+  alsa-config = { alsa_monitor = cfg.alsa-monitor; };
+in {
   options.frgd.hardware.audio = with types; {
     enable = mkBoolOpt false "Whether or not to enable audio support.";
     alsa-monitor = mkOpt attrs { } "Alsa configuration.";
@@ -113,10 +121,8 @@ in
       "Audio nodes to pass to Pipewire as `context.objects`.";
     modules = mkOpt (listOf attrs) [ ]
       "Audio modules to pass to Pipewire as `context.modules`.";
-    extra-packages = mkOpt (listOf package) [
-      pkgs.qjackctl
-      pkgs.easyeffects
-    ] "Additional packages to install.";
+    extra-packages = mkOpt (listOf package) [ pkgs.qjackctl pkgs.easyeffects ]
+      "Additional packages to install.";
   };
 
   config = mkIf cfg.enable {
@@ -157,10 +163,8 @@ in
 
     hardware.pulseaudio.enable = mkForce false;
 
-    environment.systemPackages = with pkgs; [
-      pulsemixer
-      pavucontrol
-    ] ++ cfg.extra-packages;
+    environment.systemPackages = with pkgs;
+      [ pulsemixer pavucontrol ] ++ cfg.extra-packages;
 
     frgd.user.extraGroups = [ "audio" ];
 

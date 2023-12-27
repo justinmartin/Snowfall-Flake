@@ -1,10 +1,7 @@
 { lib, config, ... }:
-
-let
-  inherit (lib) mkEnableOption mkIf;
-  inherit (lib.frgd) enabled;
-
-  cfg = config.frgd.cli-apps.zellij;
+with lib;
+with lib.frgd;
+let cfg = config.frgd.cli-apps.zellij;
 in {
   options.frgd.cli-apps.zellij = { enable = mkEnableOption "zellij"; };
 
@@ -15,7 +12,6 @@ in {
       settings = {
         theme = "gruvbox-dark";
         pane_frames = false;
-
       };
     };
   };

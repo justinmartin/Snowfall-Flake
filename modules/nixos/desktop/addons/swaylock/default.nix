@@ -1,10 +1,7 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }:
 with lib;
 with lib.frgd;
-let
-  inherit (lib) mkEnableOption mkIf;
-
-  cfg = config.frgd.desktop.addons.swaylock;
+let cfg = config.frgd.desktop.addons.swaylock;
 in {
   options.frgd.desktop.addons.swaylock = {
     enable = mkEnableOption "Swaylock";

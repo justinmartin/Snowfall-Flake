@@ -50,6 +50,7 @@ in {
 
     frgd = {
       desktop.addons = {
+        swaylock = enabled;
         # waybar = enabled;
         # foot = enabled;
         # rofi = enabled;

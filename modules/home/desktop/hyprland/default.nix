@@ -1,7 +1,8 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 with lib.frgd;
+
 let cfg = config.frgd.desktop.hyprland;
 in {
   options.frgd.desktop.hyprland = with types; {

@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 with lib.frgd;
@@ -19,7 +19,6 @@ in {
       clac
       wget
       usbutils
-      gcc
       bat
       neofetch
       zip
