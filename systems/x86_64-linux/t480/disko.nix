@@ -39,11 +39,6 @@
         postCreateHook = "zfs snapshot zroot@blank";
 
         datasets = {
-          zfs_fs = {
-            type = "zfs_fs";
-            mountpoint = "/";
-            options."com.sun:auto-snapshot" = "false";
-          };
           nix = {
             type = "zfs_fs";
             mountpoint = "/nix";

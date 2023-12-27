@@ -9,10 +9,12 @@ with lib.frgd; {
   networking.hostName = "t480"; # Define your hostname.
 
   frgd = {
-    archetypes = {
-
+    system.boot = {
+      enable = true;
+      efi = true;
     };
-
+    archetypes = { workstation = enabled; };
+    desktop = { hyprland = enabled; };
     security = {
       agenix = {
         enable = true;
@@ -20,5 +22,4 @@ with lib.frgd; {
       };
     };
   };
-
 }
