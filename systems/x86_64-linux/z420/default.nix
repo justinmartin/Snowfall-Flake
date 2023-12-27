@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 with lib;
 with lib.frgd; {
   imports = [ ./hardware-configuration.nix ];
